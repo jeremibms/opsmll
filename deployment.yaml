@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: techno
-          image: 
+          image: 590184059069.dkr.ecr.us-east-1.amazonaws.com/techno-ecr-banyumas-imannuel:v.2.1.2
           ports:
             - containerPort: 2000
           env:
@@ -37,43 +37,46 @@ spec:
                   key: AWS_SESSION_TOKEN
 
             - name: AWS_REGION
-              value: "us-east-1"
+              valueFrom:
+                secretKeyRef:
+                  name: pod-secret
+                  key: AWS_REGION
 
             - name: API_GATEWAY_URL
               valueFrom:
                 secretKeyRef:
                   name: pod-secret
-                  key: API_URL
+                  key: API_GATEWAY_URL
             
-            - name: S3_BUCKET_NAME
+            - name: S3_STAGING_DIR
               valueFrom:
                 secretKeyRef:
                   name: pod-secret
-                  key: S3_BUCKET
+                  key: S3_STAGING_DIR
 
-            - name: DB_HOST
+            - name: ATHENA_DB
               valueFrom:
                 secretKeyRef:
                   name: pod-secret
-                  key: DB_HOST
+                  key: ATHENA_DB
 
-            - name: DB_USER
+            - name: ATHENA_SCHEMA_NAME
               valueFrom:
                 secretKeyRef:
                   name: pod-secret
-                  key: DB_USER
+                  key: ATHENA_SCHEMA_NAME
 
-            - name: DB_PASSWORD
+            - name: FLASK_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: pod-secret
-                  key: DB_PASSWORD
+                  key: FLASK_SECRET_KEY
 
-            - name: DB_DATABASE
+            - name: SNS_TOPIC_ARN
               valueFrom:
                 secretKeyRef:
                   name: pod-secret
-                  key: DB_DATABASE
+                  key: SNS_TOPIC_ARN
 
           
  
