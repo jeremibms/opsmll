@@ -21,7 +21,7 @@ YourCity : Banyumas
 - SNS_TOPIC_ARN=your sns topic
 - ATHENA_SCHEMA_NAME=your db athena
 
-
+  
 ## Environment for Github Action
 - AWS_ACCESS_KEY_ID=your access key id
 - AWS_SECRET_ACCESS_KEY=your secret access key
